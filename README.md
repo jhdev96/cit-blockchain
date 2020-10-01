@@ -3,13 +3,13 @@
 ### Set up for Windows
 - python3 -m venv venv
 - venv\Scripts\activate.bat
-- cd citblock
+- cd cit-blockchain
 - pip install -r requirements.txt
 - python3 manage.py migrate
 
 ### Set up for MacOS
 - python3 -m venv venv
 - . venv/bin/activate
-- cd citblock
+- cd cit-blockchain
 - pip install -r requirements.txt
 - python3 manage.py migrate
