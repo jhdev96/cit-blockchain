@@ -7,44 +7,76 @@ from blockchain_records.models import Block
 def index(request):
   return HttpResponse('<h1>Index</h1>')
 
+def get_student_fields(request) -> dict:
+  student_fields = dict(first_name=request.POST['firstname'],
+                        last_name=request.POST['lastname'],
+                        address=request.POST['address'],
+                        email=request.POST['email'],
+                        phone=request.POST['phone'],
+                        dob=request.POST['dob']
+                       )
+  return student_fields
 
 def add_record(request):
   if request.method == 'POST':
-    firstname = request.POST['firstname']
-    lastname = request.POST['lastname']
-    address = request.POST['address']
-    email = request.POST['email']
-    phone = request.POST['phone']
-    dob = request.POST['dob']
-
+    student_fields = get_student_fields(request)
 
     student = StudentRecord.objects.create(
-      first_name = firstname,
-      last_name = lastname,
-      address = address,
-      email = email,
-      phone = phone,
-      dob = dob,
-      
+                **student_fields
+              )
 
+    block_qs = Block.objects.all()
+
+    previous_block = None
+    if len(block_qs) > 0:
+      previous_block = Block.objects.order_by('-timestamp')[-1]
+
+    Block.objects.create(
+        previous_block=previous_block, 
+        action="Add",
+        data=student, 
+        nonce=len(block_qs)
+      )
+
+  return redirect('index')
+
+def update_record(request):
+  if request.method =='POST':
+    record_id = request.POST['id']
+    student_fields = get_student_fields(request)
+
+    # get and update the record fields
+    record_qs = StudentRecord.objects.filter(id=record_id)
+    record_qs.update(**student_fields)
+
+    block_queryset = Block.objects.all()
+    previous_block = Block.objects.order_by('-timestamp')[-1]
+
+    Block.objects.create(
+      previous_block=previous_block, 
+      action="Remove",
+      data=record_qs[0],
+      nonce=block_queryset
     )
-    if len(Block.objects.all()) ==0:
-      
-      
-      block = Block(None, student, nonce=len(Block.objects.all())+1)
-      block.save()
-    else:
-      previousblock = Block.objects.all()[-1]
-      Block.objects.create(previousblock, student, nonce=len(Block.objects.all())+1)
+
   return redirect('index')
 
 def delete_record(request):
   if request.method =='POST':
     record_id = request.POST['id']
     record = StudentRecord.objects.get(id=record_id)
-    previousblock = Block.objects.all()[-1]
-    block = Block.objects.create(previousblock, record,nonce=len(Block.objects.all())+1)
+
+    block_queryset = Block.objects.all()
+    previous_block = Block.objects.order_by('-timestamp')[-1]
+
+    Block.objects.create(
+      previous_block=previous_block, 
+      action="Remove",
+      data=record,
+      nonce=block_queryset
+    )
     record.delete()
+
   return redirect('index')
 
 
