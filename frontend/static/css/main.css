@@ -56,6 +56,33 @@
   color: #fff;
 }
 
+.student-table-wrapper {
+  padding: 50px;
+}
+
+.student-table {
+  margin-top: 2rem;
+  color: #fff;
+}
+
+.student-table th {
+  border-bottom: 1px solid #333;
+}
+
+.modal {
+  color: #fff !important;
+  background-color: #1e2125 !important;
+}
+
+.modal .modal-footer {
+  color: #fff !important;
+  background-color: #1e2125 !important;
+}
+
+.modal-close {
+  color: #f91f47 !important;
+}
+
 .footer {
   padding: 25px;
   text-align: center;

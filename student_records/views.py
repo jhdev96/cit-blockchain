@@ -29,7 +29,7 @@ def add_record(request):
 
     previous_block = None
     if len(block_qs) > 0:
-      previous_block = Block.objects.order_by('-timestamp')[-1]
+      previous_block = Block.objects.order_by('-timestamp')[0]
 
     Block.objects.create(
         previous_block=previous_block, 
@@ -50,7 +50,7 @@ def update_record(request):
     record_qs.update(**student_fields)
 
     block_queryset = Block.objects.all()
-    previous_block = Block.objects.order_by('-timestamp')[-1]
+    previous_block = Block.objects.order_by('-timestamp')[0]
 
     Block.objects.create(
       previous_block=previous_block, 
@@ -67,7 +67,7 @@ def delete_record(request):
     record = StudentRecord.objects.get(id=record_id)
 
     block_queryset = Block.objects.all()
-    previous_block = Block.objects.order_by('-timestamp')[-1]
+    previous_block = Block.objects.order_by('-timestamp')[0]
 
     Block.objects.create(
       previous_block=previous_block, 

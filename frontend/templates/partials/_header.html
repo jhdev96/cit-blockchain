@@ -1,0 +1,22 @@
+{% load static %}
+{% block content %}
+<header>
+  <h4>Blockchain App</h4>
+  <nav class="navbar">
+    <div>
+      <ul>
+        <li>
+          <a href="{% url 'index' %}" class="link">
+            Transactions
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'students' %}" class="link">
+            Students
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+{% endblock %}
