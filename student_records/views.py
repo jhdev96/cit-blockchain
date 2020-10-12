@@ -5,9 +5,6 @@ from .models import StudentRecord
 from blockchain_records.models import Block
 
 
-def index(request):
-  return HttpResponse('<h1>Index</h1>')
-
 def get_student_fields(request) -> dict:
   student_fields = dict(first_name=request.POST['firstname'],
                         last_name=request.POST['lastname'],
@@ -40,7 +37,7 @@ def add_record(request):
         nonce=len(block_qs)
       )
 
-  return redirect('index')
+  return redirect('transactions')
 
 @login_required(login_url='/')
 def update_record(request):
@@ -65,7 +62,7 @@ def update_record(request):
       nonce=len(block_queryset)
     )
 
-  return redirect('index')
+  return redirect('transactions')
 
 @login_required(login_url='/')
 def delete_record(request):
@@ -84,7 +81,7 @@ def delete_record(request):
     )
     record.delete()
 
-  return redirect('index')
+  return redirect('transactions')
 
 
 
