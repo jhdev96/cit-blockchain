@@ -19,6 +19,7 @@ def index(request):
     if user is not None:
       login(request, user)
       return redirect('transactions')
+    return redirect("index")
 
   else:
     context = {

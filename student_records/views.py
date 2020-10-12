@@ -47,19 +47,22 @@ def update_record(request):
   if request.method =='POST':
     record_id = request.POST['id']
     student_fields = get_student_fields(request)
+    print(record_id, student_fields)
+
 
     # get and update the record fields
     record_qs = StudentRecord.objects.filter(id=record_id)
     record_qs.update(**student_fields)
+    print(record_qs)
 
     block_queryset = Block.objects.all()
     previous_block = Block.objects.order_by('-timestamp')[0]
 
     Block.objects.create(
       previous_block=previous_block, 
-      action="Remove",
+      action="Update",
       data=record_qs[0],
-      nonce=block_queryset
+      nonce=len(block_queryset)
     )
 
   return redirect('index')
