@@ -1,16 +1,22 @@
-{% load static %}
-{% block content %}
+{% load static %} {% block content %}
 <header>
-  <h4>Blockchain App</h4>
   <nav class="navbar">
     <div>
       <ul>
-        <li>
-          <a href="{% url 'index' %}" class="link">
+        <li
+          {% if 'student' not in request.path %} 
+            class="active"
+          {% endif %}
+        >
+          <a href="{% url 'transactions' %}" class="link">
             Transactions
           </a>
         </li>
-        <li>
+        <li
+          {% if 'student' in request.path %} 
+            class="active"
+          {% endif %}
+        >
           <a href="{% url 'students' %}" class="link">
             Students
           </a>

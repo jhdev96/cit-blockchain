@@ -1,32 +1,41 @@
 {% extends 'base.html' %}
-{% load static %}
-{% block content %}
-<div class="chain">
-  {% if blocks %}
-    {% for block in blocks %}
-      <div class="block">
-        <p class="block-field">
-          Timestamp: 
-          <span class="block-value">{{block.timestamp}}</span>
-        </p>
-        <p class="block-field">
-          Hash: 
-          <span class="block-value">{{block.block_hash}}</span>
-        </p>
-        <p class="block-field">
-          Previous hash:
-          <span class="block-value">{{block.previous_block}}</span>
-        </p>
-        <p class="block-field">
-          Action: 
-          <span class="block-value">{{block.action}}</span>
-        </p>
-        <p class="block-field">
-          Student:
-          <span class="block-value">{{block.data}}</span>
-        </p>
-      </div>
-    {% endfor %}
-  {% endif %}
+
+{% load static %} {% block content %}
+
+<!-- Header -->
+{% include './_header.html' %}
+<div class="content-wrapper">
+  <div class="chain">
+    {% if blocks %}
+      {% for block in blocks %}
+        <div class="block">
+          <p class="block-field">
+            Timestamp: 
+            <span class="block-value">{{block.timestamp}}</span>
+          </p>
+          <p class="block-field">
+            Hash: 
+            <span class="block-value">{{block.block_hash}}</span>
+          </p>
+          <p class="block-field">
+            Previous hash:
+            <span class="block-value">{{block.previous_block}}</span>
+          </p>
+          <p class="block-field">
+            Action: 
+            <span class="block-value">{{block.action}}</span>
+          </p>
+          <p class="block-field">
+            Student:
+            <span class="block-value">
+              <a href="{% url 'student' block.data.id %}" class="student-id">
+                {{block.data}}
+              </a>
+            </span>
+          </p>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
 </div>
 {% endblock %}

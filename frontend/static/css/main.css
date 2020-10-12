@@ -1,12 +1,79 @@
 .app {
+  height: 100vh;
   text-align: center;
   background-color: #141618;
 }
 
+.app .top-bar {
+  color: #fff;
+  background-color: #1e2125;
+}
+
 .app header {
+  margin: 0;
   padding: 5px;
   color: #fff;
   background-color: #1e2125;
+}
+
+.top-bar .site-title {
+  font-size: 2em;
+  color: #fff;
+}
+
+.content-wrapper {
+  margin-top: 4rem;
+  padding: 0;
+}
+
+.cit-card {
+  margin: 5em auto;
+  padding: 2em 1em;
+  max-width: 500px;
+  color: #fff;
+  border-radius: 3px;
+  background-color: #1e2125;
+}
+
+.cit-card .card-header {
+  font-size: 1.7em;
+}
+
+.cit-card .card-content {
+  padding: 20px 40px;
+}
+
+.cit-card .card-content input {
+  margin-bottom: 2em;
+  color: #fff !important;
+}
+
+.cit-card .card-content input:focus {
+  border-bottom: 1px solid #00ceff !important;
+}
+
+.login-btn {
+  padding: 10px 20px;
+  width: 30%;
+  color: #141618;
+  background-color: #00ceff;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: none;
+  outline: 0;
+  cursor: pointer;
+}
+
+.logout-btn {
+  margin-right: 1em;
+  padding: 10px 20px;
+  color: #141618;
+  background-color: #00ceff !important;
+  border: 0;
+  border-radius: 4px;
+  outline: 0;
+  box-shadow: none;
+  cursor: pointer;
 }
 
 .navbar {
@@ -21,7 +88,7 @@
   transition: 0.3s !important;
 }
 
-.navbar li:hover {
+.navbar .active {
   background-color: transparent !important;
   border-bottom: 2px solid #00ceff;
 }
@@ -34,6 +101,8 @@
 
 .chain {
   display: inline-block;
+  max-height: 500px;
+  overflow-y: scroll;
 }
 
 .block {
@@ -42,9 +111,6 @@
   text-align: left;
   border-radius: 4px;
   background-color: #1e2125;
-}
-.block:first-child {
-  margin-top: 4rem;
 }
 
 .block .block-field {
@@ -57,7 +123,7 @@
 }
 
 .student-table-wrapper {
-  padding: 50px;
+  padding: 0 50px 50px;
 }
 
 .student-table {
@@ -69,9 +135,25 @@
   border-bottom: 1px solid #333;
 }
 
+.student-table td {
+  color: #cecece;
+}
+
+.student-id {
+  font-weight: 600;
+}
+
 .modal {
   color: #fff !important;
   background-color: #1e2125 !important;
+}
+
+.modal-content input {
+  color: #fff !important;
+}
+
+.modal-content input:focus {
+  border-bottom: 1px solid #00ceff !important;
 }
 
 .modal .modal-footer {
@@ -84,6 +166,9 @@
 }
 
 .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   padding: 25px;
   text-align: center;
   color: #fff;

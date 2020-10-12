@@ -1,0 +1,14 @@
+<nav>
+  <div class="nav-wrapper top-bar">
+    <a href="#" class="brand-logo center">CodeIT Admin</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      {% if user.is_authenticated %}
+        <li>
+          <form action="{% url 'logout' %}">
+            <input class="logout-btn" type="submit" value="logout">
+          </form>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
