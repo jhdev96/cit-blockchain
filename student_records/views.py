@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import StudentRecord 
 from blockchain_records.models import Block
@@ -17,6 +18,7 @@ def get_student_fields(request) -> dict:
                        )
   return student_fields
 
+@login_required(login_url='/')
 def add_record(request):
   if request.method == 'POST':
     student_fields = get_student_fields(request)
@@ -40,6 +42,7 @@ def add_record(request):
 
   return redirect('index')
 
+@login_required(login_url='/')
 def update_record(request):
   if request.method =='POST':
     record_id = request.POST['id']
@@ -61,6 +64,7 @@ def update_record(request):
 
   return redirect('index')
 
+@login_required(login_url='/')
 def delete_record(request):
   if request.method =='POST':
     record_id = request.POST['id']

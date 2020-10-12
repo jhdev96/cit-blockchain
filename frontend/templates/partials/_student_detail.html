@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{% url 'update-record' %}" method="post">
+  {% csrf_token %}
+  <div class="cit-card">
+    <div class="card-header">
+      {{ student.first_name }} {{ student.last_name }}
+    </div>
+    <div class="modal-content">
+      <input type="hidden" name="id" value={{ student.id }}>
+      <div class="input-field col s6">
+        <input value="{{ student.first_name }}" type="text" name="firstname">
+        <label for="first_name">First Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input value="{{ student.last_name }}" type="text" name="lastname">
+        <label for="last_name">Last Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input value="{{ student.email }}" type="text" name="email">
+        <label for="email">Email</label>
+      </div>
+      <div class="input-field col s6">
+        <input value="{{ student.address }}" type="text" name="address">
+        <label for="address">Address</label>
+      </div>
+      <div class="input-field col s6">
+        <input value="{{ student.phone }}" type="text" name="phone">
+        <label for="phone">Phone</label>
+      </div>
+      <div class="input-field col s6">
+        <input value="{{ student.dob }}" type="text" name="dob">
+        <label for="dob">Date of birth</label>
+      </div>
+      <br /><br />
+    </div>
+    <input type="submit" class="btn btn-primary" value="Save details">
+  </div>
+</form>
+{% endblock  %}

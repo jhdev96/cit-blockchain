@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from blockchain_records.models import Block
 from student_records.models import StudentRecord
@@ -31,6 +31,7 @@ def logout_user(request):
   logout(request)
   return redirect('index')
 
+@login_required(login_url='/')
 def blocks(request):
   context = {
     'blocks': Block.objects.order_by('-timestamp')
@@ -38,6 +39,7 @@ def blocks(request):
   
   return render(request, 'partials/_blocks.html', context)
 
+@login_required(login_url='/')
 def students(request):
   context = {
     'students': StudentRecord.objects.all()
@@ -45,9 +47,13 @@ def students(request):
 
   return render(request, 'partials/_students.html', context)
 
+@login_required(login_url='/')
 def student_detail(request, id):
 
   student = StudentRecord.objects.get(id=id)
-  print(student.first_name, student.last_name)
+  
+  context = {
+    'student': student
+  }
 
-  return HttpResponse('<h1>Student detail</h1>')
+  return render(request, 'partials/_student_detail.html', context)

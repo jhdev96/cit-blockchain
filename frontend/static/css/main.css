@@ -1,5 +1,9 @@
+body {
+  background-color: #141618;
+}
+
 .app {
-  height: 100vh;
+  height: 100%;
   text-align: center;
   background-color: #141618;
 }
@@ -33,6 +37,10 @@
   color: #fff;
   border-radius: 3px;
   background-color: #1e2125;
+}
+
+.input-field.col label {
+  left: 0 !important;
 }
 
 .cit-card .card-header {
@@ -166,7 +174,6 @@
 }
 
 .footer {
-  position: absolute;
   bottom: 0;
   width: 100%;
   padding: 25px;
