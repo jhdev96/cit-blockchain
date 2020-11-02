@@ -2,6 +2,30 @@ body {
   background-color: #141618;
 }
 
+/* Change the white to any color ;) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+  color: #fff;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: 0 0 0 30px #2f343a inset !important;;
+  -webkit-box-shadow: 0 0 0 30px #2f343a inset !important;
+}
+
+td, th {
+  padding: 15px !important;
+}
+
+img {
+  width: 60%;
+}
+
+hr {
+  border-bottom: 0.5px solid #242425 !important;
+    border-top: 0;
+}
+
 .app {
   height: 100%;
   text-align: center;
@@ -34,9 +58,21 @@ body {
   margin: 5em auto;
   padding: 2em 1em;
   max-width: 500px;
+  max-height: 600px;
+  overflow-y: scroll;
   color: #fff;
   border-radius: 3px;
   background-color: #1e2125;
+}
+
+.cit-card--outline {
+  margin: 3em auto;
+  width: 100%;
+  max-height: 600px;
+  overflow-y: scroll;
+  color: #fff;
+  border-radius: 3px;
+  border: 1px solid #2f343a;
 }
 
 .input-field.col label {
@@ -131,6 +167,7 @@ body {
 }
 
 .student-table-wrapper {
+  overflow-x: auto;
   padding: 0 50px 50px;
 }
 
@@ -141,14 +178,35 @@ body {
 
 .student-table th {
   border-bottom: 1px solid #333;
+  white-space: nowrap;
+}
+
+.student-table tr {
+  white-space: nowrap;
 }
 
 .student-table td {
   color: #cecece;
+  border-right: 1px solid #1d1d1d !important;
 }
 
 .student-id {
   font-weight: 600;
+}
+
+.student-detail {
+  padding: 0 3em;
+}
+
+.student-bio {
+  padding: 0.25rem;
+  height: 200px;
+  line-height: 1.5;
+  box-shadow: none !important;
+  outline: 0;
+  color: #fff;
+  border: 1px solid #292e33;
+  background-color: #181a1d;
 }
 
 .modal {

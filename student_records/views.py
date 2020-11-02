@@ -11,7 +11,21 @@ def get_student_fields(request) -> dict:
                         address=request.POST['address'],
                         email=request.POST['email'],
                         phone=request.POST['phone'],
-                        dob=request.POST['dob']
+                        dob=request.POST['dob'],
+                        time_pref=request.POST['time-pref'],
+                        empl_status=request.POST['empl-status'],
+                        problem_solving=request.POST['prob-solving'],
+                        data_bg=request.POST['data-bg'],
+                        mean_med_mode=request.POST['mean-med-mode'],
+                        programming_exp=request.POST['programming-exp'],
+                        sql_exp=request.POST['sql-exp'],
+                        job_goal=request.POST['job-goal'],
+                        events=request.POST['events'],
+                        commitments=request.POST['commits'],
+                        other=request.POST['other'],
+                        how_find_codeit=request.POST['how-find-codeit'],
+                        has_laptop=request.POST['has-laptop'],
+                        operating_sys=request.POST['op-sys'],
                        )
   return student_fields
 
@@ -43,14 +57,13 @@ def add_record(request):
 def update_record(request):
   if request.method =='POST':
     record_id = request.POST['id']
+    student_bio = request.POST['bio']
     student_fields = get_student_fields(request)
-    print(record_id, student_fields)
-
+    student_fields['bio'] = student_bio
 
     # get and update the record fields
     record_qs = StudentRecord.objects.filter(id=record_id)
     record_qs.update(**student_fields)
-    print(record_qs)
 
     block_queryset = Block.objects.all()
     previous_block = Block.objects.order_by('-timestamp')[0]
@@ -62,7 +75,7 @@ def update_record(request):
       nonce=len(block_queryset)
     )
 
-  return redirect('transactions')
+  return redirect('student', id=record_id)
 
 @login_required(login_url='/')
 def delete_record(request):

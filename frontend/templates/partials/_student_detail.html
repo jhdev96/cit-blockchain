@@ -1,41 +1,169 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!-- Header -->
+{% include './_header.html' %}
 <form action="{% url 'update-record' %}" method="post">
   {% csrf_token %}
-  <div class="cit-card">
-    <div class="card-header">
-      {{ student.first_name }} {{ student.last_name }}
+  <div class="row student-detail">
+    <div class="col s6 cit-card--outline">
+      <img 
+        src="https://citinstitute.tech/wp-content/uploads/2019/12/New-CODEIT-LOGO-TRANSPARENT-1.png" 
+        alt="student image"
+      >
+      <h5>
+        About {{ student.first_name }} {{ student.last_name }}
+        <hr>
+      </h5>
+      <div style="padding: 15px;">
+        <textarea 
+          class="student-bio" 
+          name="bio" 
+          cols="30" 
+          rows="20" 
+          placeholder="Enter a bio for {{ student.first_name }}"
+        >{{ student.bio }}</textarea>
+      </div>
     </div>
-    <div class="modal-content">
-      <input type="hidden" name="id" value={{ student.id }}>
-      <div class="input-field col s6">
-        <input value="{{ student.first_name }}" type="text" name="firstname">
-        <label for="first_name">First Name</label>
+    <div class="col s6">
+      <div class="cit-card" style="margin-top: 3em; max-width: 100%; max-height: 440px;">
+        <div class="card-header">
+          Student detail
+        </div>
+        <br />
+        <div class="modal-content">
+          <input type="hidden" name="id" value={{ student.id }}>
+          <div class="input-field col s6">
+            <input value="{{ student.first_name }}" type="text" name="firstname">
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input value="{{ student.last_name }}" type="text" name="lastname">
+            <label for="last_name">Last Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input value="{{ student.email }}" type="text" name="email">
+            <label for="email">Email</label>
+          </div>
+          <div class="input-field col s6">
+            <input value="{{ student.address }}" type="text" name="address">
+            <label for="address">Address</label>
+          </div>
+          <div class="input-field col s6">
+            <input value="{{ student.phone }}" type="text" name="phone">
+            <label for="phone">Phone</label>
+          </div>
+          <div class="input-field col s6">
+            <input value="{{ student.dob }}" type="text" name="dob">
+            <label for="dob">Date of birth</label>
+          </div>
+          <div class="input-field col s6">
+            <input 
+              type="text" 
+              name="time-pref" 
+              value="{{ student.time_pref }}"
+              >
+              <label for="time-pref">Class preference</label>
+          </div>
+          <div class="input-field col s6">
+            <input 
+              type="text" 
+              name="empl-status" 
+              value="{{ student.empl_status }}"
+              >
+              <label for="empl_status">Emloyment status</label>
+          </div>
+          <div class="input-field col s6">
+            <input 
+              type="text" 
+              name="commits" 
+              value="{{ student.commitments }}"
+            >
+            <label for="commits">Commitments</label>
+          </div>
+          <div class="input-field col s6">
+            <input 
+              type="text" 
+              name="prob-solving" 
+              value="{{ student.problem_solving }}"
+            >
+            <label for="prob-solve">Experience solving problems</label>
+          </div>
+          <div class="input-field col s6">
+            <input 
+              type="text" 
+              name="data-bg" 
+              value="{{ student.data_bg }}"
+            >
+            <label for="data-bg">Background in data</label>
+          </div>
+          <div class="input-field col s6">
+            <input 
+              type="number" 
+              min="1" 
+              max="5"
+              name="mean-med-mode" 
+              value="{{ student.mean_med_mode }}"
+            >
+            <label for="mean-med-mode">
+              Can calculate mean, median and mode
+            </label>
+          </div>
+          <div class="input-field col s6">
+            <input 
+              type="number" 
+              min="1"
+              max="5" 
+              name="programming-exp" 
+              value="{{ student.programming_exp }}"
+            >
+            <label for="programming-exp">Programming experience</label>
+          </div>
+          <div class="input-field col s6">
+            <input 
+              type="number" 
+              min="1" 
+              max="5"
+              name="sql-exp" 
+              value="{{ student.sql_exp }}"
+            >
+            <label for="sql-exp">SQL experience</label>
+          </div>
+          <div class="input-field col s6">
+            <input type="text" name="job-goal" value="{{ student.job_goal }}">
+            <label for="job-goal">Job goal</label>
+          </div>
+          <div class="input-field col s6">
+            <input type="text" name="events" value="{{ student.events }}">
+            <label for="events">
+              Events that led to choosing a career in IT
+            </label>
+          </div>
+          <div class="input-field col s6">
+            <input type="text" name="other" value="{{ student.other }}">
+            <label for="other">Any disabilities</label>
+          </div>
+          <div class="input-field col s6">
+            <input 
+              type="text" 
+              name="how-find-codeit" 
+              value="{{ student.how_find_codeit }}"
+            >
+            <label for="how-find-codeit">How the student found CODEIT</label>
+          </div>
+          <div class="input-field col s6">
+            <input type="text" name="has-laptop" value="{{ student.has_laptop }}">
+            <label for="has-laptop">Has a laptop (Yes or No)</label>
+          </div>
+          <div class="input-field col s6">
+            <input type="text" name="op-sys" value="{{ student.operating_sys }}">
+            <label for="op-sys">Operating system</label>
+          </div>
+          <br />
+        </div>
       </div>
-      <div class="input-field col s6">
-        <input value="{{ student.last_name }}" type="text" name="lastname">
-        <label for="last_name">Last Name</label>
-      </div>
-      <div class="input-field col s6">
-        <input value="{{ student.email }}" type="text" name="email">
-        <label for="email">Email</label>
-      </div>
-      <div class="input-field col s6">
-        <input value="{{ student.address }}" type="text" name="address">
-        <label for="address">Address</label>
-      </div>
-      <div class="input-field col s6">
-        <input value="{{ student.phone }}" type="text" name="phone">
-        <label for="phone">Phone</label>
-      </div>
-      <div class="input-field col s6">
-        <input value="{{ student.dob }}" type="text" name="dob">
-        <label for="dob">Date of birth</label>
-      </div>
-      <br /><br />
     </div>
-    <input type="submit" class="btn btn-primary" value="Save details">
   </div>
+  <input type="submit" class="btn btn-primary" value="Save details">
 </form>
 {% endblock  %}

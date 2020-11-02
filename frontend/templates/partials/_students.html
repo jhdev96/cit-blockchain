@@ -5,10 +5,9 @@
 <!-- Header -->
 {% include './_header.html' %}
 <div class="content-wrapper">
+  <!-- Modal Trigger -->
+  <button data-target="modal1" class="btn modal-trigger">Add Student</button>
   <div class="student-table-wrapper">
-    <!-- Modal Trigger -->
-    <button data-target="modal1" class="btn modal-trigger">Add Student</button>
-
     <table class="student-table">
       <thead>
         <th></th>
@@ -18,6 +17,11 @@
         <th>Address</th>
         <th>Email</th>
         <th>DOB</th>
+        <th>Class time</th>
+        <th>Empl status</th>
+        <th>Job Goal</th>
+        <th>Laptop</th>
+        <th>Operating system</th>
       </thead>
       <tbody>
         {% if students %}
@@ -34,6 +38,11 @@
               <td>{{ student.address }}</td>
               <td>{{ student.email }}</td>
               <td>{{ student.dob }}</td>
+              <td>{{ student.time_pref }}</td>
+              <td>{{ student.empl_status }}</td>
+              <td>{{ student.job_goal }}</td>
+              <td>{{ student.has_laptop }}</td>
+              <td>{{ student.operating_sys }}</td>
             </tr>
           {% endfor %}
         {% endif %}
@@ -53,6 +62,54 @@
         <input type="text" name="address" placeholder="address">
         <input type="text" name="phone" placeholder="phone">
         <input type="text" name="dob" placeholder="date of birth">
+        <input 
+          type="text" 
+          name="time-pref" 
+          placeholder="time preference"
+        >
+        <input 
+          type="text" 
+          name="empl-status" 
+          placeholder="employment status"
+        >
+        <input type="text" name="commits" placeholder="commitments">
+        <input 
+          type="text" 
+          name="prob-solving" 
+          placeholder="problem solving abilities"
+        >
+        <input 
+          type="text" 
+          name="data-bg" 
+          placeholder="background in data"
+        >
+        <input 
+          type="number" 
+          min="1" 
+          max="5"
+          name="mean-med-mode" 
+          placeholder="mean, med, mode"
+        >
+        <input 
+          type="number" 
+          min="1" 
+          max="5"
+          name="programming-exp" 
+          placeholder="programming experience"
+        >
+        <input 
+          type="number" 
+          min="1" 
+          max="5"
+          name="sql-exp" 
+          placeholder="sql experience"
+        >
+        <input type="text" name="job-goal" placeholder="job goal">
+        <input type="text" name="events" placeholder="events that led to IT">
+        <input type="text" name="other" placeholder="any disabilities">
+        <input type="text" name="how-find-codeit" placeholder="how find codeit">
+        <input type="text" name="has-laptop" placeholder="do you have a laptop">
+        <input type="text" name="op-sys" placeholder="what operating system">
         <br /><br />
         <input type="submit" class="btn btn-primary" value="Add student">
       </form>
