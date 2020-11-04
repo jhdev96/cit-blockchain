@@ -1,0 +1,26 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "web",
+      "image": "jhdev96/citadmin-django",
+      "hostname": "web",
+      "essential": false,
+      "memory": 128 
+    },
+    {
+      "name": "nginx",
+      "image": "jhdev96/citadmin-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["web"],
+      "memory": 128
+    }
+  ]
+}
