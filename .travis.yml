@@ -22,9 +22,9 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: 'us-east-1'
-  app: 'citadmin-docker'
-  env: 'citadminDocker-env'
-  bucket_name: elasticbeanstalk-us-east-1-271007152028
+  app: 'citadmin'
+  env: 'Citadmin-env'
+  bucket_name: elasticbeanstalk-us-east-1-736522198944
   bucket_path: docker-cit
   on:
     branch: master
