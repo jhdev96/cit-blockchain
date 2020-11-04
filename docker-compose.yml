@@ -18,15 +18,35 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=pg_pass
       - POSTGRES_DB=postgres_prod
-  nginx:
+  nginx-proxy:
+    container_name: nginx-proxy
     build: ./nginx
+    restart: always
     volumes:
       - static_volume:/home/app/web/static
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+      - /var/run/docker.sock:/tmp/docker.sock:ro
     ports:
-      - 1337:80
+      - 443:443
+      - 80:80
     depends_on: 
       - web
-
+  nginx-proxy-letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    env_file: 
+      - .env.proxy-companion
+    volumes: 
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+    depends_on: 
+      - nginx-proxy
 volumes:
   postgres_data:
   static_volume:
+  certs:
+  html:
+  vhost:
