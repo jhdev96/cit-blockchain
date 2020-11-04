@@ -18,4 +18,16 @@ after_success:
   # push images to docker hub
   - docker push jhdev96/citadmin-django
   - docker push jhdev96/citadmin-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-1'
+  app: 'citadmin-docker'
+  env: 'citadminDocker-env'
+  bucket_name: elasticbeanstalk-us-east-1-271007152028
+  bucket_path: docker-cit
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
   
