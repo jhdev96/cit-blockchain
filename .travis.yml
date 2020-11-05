@@ -22,10 +22,10 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: 'us-east-1'
-  app: 'citadmin'
-  env: 'Citadmin-env-1'
+  app: 'docker-citadmin'
+  env: 'DockerCitadmin-env'
   bucket_name: elasticbeanstalk-us-east-1-736522198944
-  bucket_path: docker-cit
+  bucket_path: docker-citadmin
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
