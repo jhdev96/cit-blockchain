@@ -2,6 +2,7 @@ from django.db import models
 import uuid
 from hashlib import sha256
 from student_records.models import StudentRecord
+import os
 
 
 class Block(models.Model):
@@ -18,7 +19,7 @@ class Block(models.Model):
 
     def block_hash(self):
         if self.previous_block == None:
-            previous_hash = '*Hufsifd8ybw3_+40-87&I/SD=&@#*3S4b'
+            previous_hash = os.getenv("GEN_HASH")
         else: previous_hash = self.previous_block.block_hash()
 
         data = ','.join(
