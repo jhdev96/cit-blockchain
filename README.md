@@ -1,15 +1,10 @@
 # cit-blockchain
 
-### Set up for Windows
-- python3 -m venv venv
-- venv\Scripts\activate.bat
-- cd cit-blockchain
-- pip install -r requirements.txt
-- python3 manage.py migrate
+### Running this app
+- Running this app requires Docker
 
-### Set up for MacOS
-- python3 -m venv venv
-- . venv/bin/activate
-- cd cit-blockchain
-- pip install -r requirements.txt
-- python3 manage.py migrate
+### Set up for Dev Environment
+- docker-compose -f docker-compose.dev.yml up --build
+
+### Set up for Prod Environment
+- docker-compose up --build
