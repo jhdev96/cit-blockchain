@@ -5,7 +5,8 @@ or an existing student's info is updated, a new block with a
 unique hash is added to the network.
 
 ### Running this app
-- Running this app requires Docker
+Running this app requires Docker. If you don't have Docker
+installed on your machine, go here: https://www.docker.com/products/docker-desktop
 
 ### Set up for Dev Environment
 - docker-compose -f docker-compose.dev.yml up --build
