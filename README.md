@@ -1,7 +1,7 @@
 # cit-blockchain
 A blockchain app for tracking and updating student records. 
-When a new student is added to the citinstitute database 
-or an existing student's info is update, a new block with a
+When a new student is added to the citinstitute database,
+or an existing student's info is updated, a new block with a
 unique hash is added to the network.
 
 ### Running this app
