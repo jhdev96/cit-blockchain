@@ -43,7 +43,7 @@ def blocks(request):
 @login_required(login_url='/')
 def students(request):
   context = {
-    'students': StudentRecord.objects.all()
+    'students': StudentRecord.objects.order_by('id')
   }
 
   return render(request, 'partials/_students.html', context)

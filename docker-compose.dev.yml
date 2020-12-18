@@ -8,8 +8,14 @@ services:
       - ./:/usr/src/app/
     ports:
       - 8000:8000
-    env_file:
-      - ./.env.dev
+    environment: 
+      - DEBUG=1
+      - SQL_DB=postgres
+      - SQL_USER=postgres
+      - SQL_PASSWORD=pg_pass
+      - SQL_HOST=database
+      - SQL_PORT=5432
+      - DATABASE=postgres
     depends_on: 
       - database
   database:

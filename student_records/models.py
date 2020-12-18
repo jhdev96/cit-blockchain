@@ -22,7 +22,7 @@ class StudentRecord(models.Model):
   how_find_codeit   = models.TextField(default="None")
   has_laptop        = models.CharField(max_length=20, default="Yes")
   operating_sys     = models.CharField(max_length=100, default="Windows")
-  bio               = models.TextField(default=f"Enter a bio for {first_name}")
+  bio               = models.TextField(default=f"Enter a bio")
  
   def __str__(self):
     return f"{self.first_name} {self.last_name}"
