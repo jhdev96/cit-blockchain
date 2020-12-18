@@ -12,7 +12,9 @@ installed, go here: https://www.docker.com/products/docker-desktop
 - docker-compose -f docker-compose.dev.yml up --build
 - To create an admin account run:
    <br>```docker-compose exec web python manage.py createsuperuser```
+   <br><br> Navigate to http://localhost:8000 in your browser
 
 
 ### Set up for Prod Environment
 - docker-compose up --build
+<br><br> Navigate to http://localhost in your browser
